@@ -12,7 +12,7 @@ const enviarMensaje = async(number, message) => {
                 body: message,
                 from: process.env.NUMBER_TWILIO,
                 to: number
-            })
+            }).catch((e) => { throw new Error(e.message) })
     }
     //enviarMensaje('+57 3194751456','hola desde la app de all-clean')
 module.exports = enviarMensaje

@@ -64,7 +64,7 @@ router.post('/enviarMensaje', auth, async(req, res) => {
         const clientes = await Cliente.find({ user: req.user._id })
         for (i = 0; i < clientes.length; i++) {
             try {
-                twilio(clientes[i].numero, mensaje)
+                await twilio(clientes[i].numero, mensaje)
                 casosCorrectos++
             } catch (e) {
                 resultados.push({ id: 2, enviado: clientes[i].numero, mensaje: e.message })
